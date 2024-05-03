@@ -15,6 +15,9 @@ node_modules
 # .DS_Store is only for Mac users
 **/.DS_Store
 
+# 📌 I'm not sure if it is necessary to ignore the database on the github repo
+database
+
 README.md
 
 cse340.7z
