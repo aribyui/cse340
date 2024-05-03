@@ -1,8 +1,3 @@
---
--- Database: 'cse 340 project', public schema
--- Assigment 2, Task 2
---
-
 -- Create the Type
 CREATE TYPE public.account_type AS ENUM
     ('Client', 'Employee', 'Admin');
