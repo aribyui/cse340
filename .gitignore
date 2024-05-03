@@ -18,7 +18,7 @@ node_modules
 # 📌 I'm not sure if it is necessary to ignore the database on the github repo
 # database
 
-inventory-data.txt
+# inventory-data.txt
 
 README.md
 
