@@ -16,7 +16,9 @@ node_modules
 **/.DS_Store
 
 # 📌 I'm not sure if it is necessary to ignore the database on the github repo
-database
+# database
+
+# inventody-data-txt
 
 README.md
 
