@@ -222,6 +222,37 @@ picture img {
   color: var(--color1);
 }
 
+#inv-display {
+  list-style-position: inside;
+  list-style: none;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+#inv-display img {
+  display: block;
+  margin: 1rem auto;
+}
+
+#inv-display li {
+  border: 2px solid var(--color1);
+  margin-bottom: 1rem;
+}
+
+.namePrice {
+  padding: 0 1rem 1rem;
+}
+
+.namePrice a {
+  color: var(--color1);
+}
+
+.namePrice hr {
+  border: 2px solid var(--color1);
+}
+
 /* larger view */
 @media screen and (min-width: 32.5em) {
   body {
@@ -298,5 +329,10 @@ picture img {
 
   .delorean-reviews ul {
     line-height: 2.75rem; 
+  } 
+
+  #inv-display {
+    grid-template-columns: 1fr 1fr 1fr;      
   }
+ 
 }
