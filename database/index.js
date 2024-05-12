@@ -50,7 +50,7 @@ if (process.env.NODE_ENV == "development") {
 } else {
   pool = new Pool({
     // Si el entorno es producción, crea una nueva instancia de 'Pool' con la cadena de conexión apropiada
-    connectionString: process.env.DATABASE_INTERNAL,
+    connectionString: process.env.DATABASE_URL,
   })
   // Exporta la instancia 'pool' para que pueda ser utilizada en otros módulos
   module.exports = pool
