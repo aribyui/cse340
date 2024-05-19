@@ -1,6 +1,7 @@
 :root {     
   --color1: #101010; 
-  --color2: #FFF;
+  --color2: #ededed;
+  --color3: #FFF;
   --accent1: #EB5E28;
   --transparent: #ffffffa2; 
   --headings: 'Yusei Magic', sans-serif;
@@ -13,7 +14,7 @@
 *:after {
   box-sizing: border-box;
   padding: 0;
-  margin: 0;
+  margin: 0;  
 }
 
 h1, h2, h3, input {
@@ -25,7 +26,7 @@ li, a, p, img {
 }
 
 #wrapper {
-  background-color: var(--color2);
+  background-color: var(--color3);
   margin: 0.5rem;  
 }
 
@@ -49,27 +50,27 @@ header {
   color: var(--color1);
 }
 
-nav ul {
+ nav ul {
   background-color: var(--color1);
   list-style-type: none;
   display: flex;
 }
 
 nav li {
-  flex: 1 1 100%
+  flex: 1 1 100%;
 }
 
 nav a {  
   display: block;
-  color: var(--color2);
+  color: var(--color3);
   text-decoration: none;
   text-align: center; 
   padding: 1rem 0;
 }
 
 nav a:hover {
-  background-color: #EB5E28;
-  color: var(--color2); 
+  background-color: var(--accent1);
+  color: var(--color3);   
   transition: 0.2s ease-in-out;
 }
 
@@ -77,6 +78,12 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+}
+
+main h1,
+main h2
+{
+  margin-top: 1rem;
 }
 
 /* hero */
@@ -130,7 +137,7 @@ picture img {
 
 .hero-label input:hover {
   background-color: var(--color1);
-  color: var(--color2);
+  color: var(--color3);
   transition: 0.2s ease-in-out;
 }
 
@@ -142,7 +149,6 @@ picture img {
 }
 
 /* delorean reviews */
-
 .delorean-reviews {
   display: grid;
   grid-template-columns: 1fr;
@@ -234,11 +240,13 @@ picture img {
 #inv-display img {
   display: block;
   margin: 1rem auto;
+  height: 100px;
+  width: auto;
 }
 
 #inv-display li {
-  border: 2px solid var(--color1);
-  margin-bottom: 1rem;
+  border: 3px solid var(--color1);
+  border-radius: 10px;
 }
 
 .namePrice {
@@ -250,7 +258,47 @@ picture img {
 }
 
 .namePrice hr {
-  border: 2px solid var(--color1);
+  border: 1px solid var(--color1);
+}
+
+footer {
+  margin-top: 2rem;
+}
+
+#vehicle-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+#container1 {
+  position: relative;
+}
+
+#container1 img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  border: 3px solid var(--color1);
+  border-radius: 10px;
+}
+
+#container2 h3 {
+  margin-bottom: 1rem;
+}
+
+#container2 p {
+  color: var(--color1);
+  padding: 1rem;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+#container2 p:nth-child(even) {
+  background-color: var(--color2);
 }
 
 /* larger view */
@@ -260,7 +308,7 @@ picture img {
   }
   #wrapper {   
     border: 3px solid var(--accent1);
-    max-width: 900px;
+    max-width: 1000px;
     margin: 1rem auto;
     padding: 1rem;
     border-radius: 10px;
@@ -335,4 +383,7 @@ picture img {
     grid-template-columns: 1fr 1fr 1fr;      
   }
  
+  #vehicle-details {
+    grid-template-columns: 1fr 1fr;
+  }
 }

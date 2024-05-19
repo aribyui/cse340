@@ -38,9 +38,9 @@ Util.buildClassificationGrid = async function(data) {
       + '" title="View ' + vehicle.inv_make + ' ' + vehicle.inv_model
       + 'details"><img src="' + vehicle.inv_thumbnail
       + '" alt="Image of ' + vehicle.inv_make + ' ' + vehicle.inv_model
-      + ' on CSE Motors" /></a>'
+      + ' on CSE Motors"></a>'
       grid += '<div class="namePrice">'
-      grid += '<hr />'
+      grid += '<hr>'
       grid += '<h2>'
       grid += '<a href="../../inv/detail/' + vehicle.inv_id + '" title="View '
       + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">'
@@ -51,18 +51,36 @@ Util.buildClassificationGrid = async function(data) {
       grid += '</div>'
       grid += '</li>'
     })
-    grid += '<ul>'
+    grid += '</ul>'
   } else {
     grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
   }
   return grid
 }
 
-/* ****************************************
- * Middleware For Handling Errors
- * Wrap other function in this for 
- * General Error Handling
- **************************************** */
-Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+/* **************************************
+* Build the inventory item detail view HTML
+* ************************************ */
+Util.buildVehicleDetailsGrid = async function(data) {
+  let grid = '<div id="vehicle-details">'
+  let container1 = '<div id="container1">'
+  let container2 = '<div id="container2">'
+
+  container1 += '<img src="' + data.inv_image + '" alt="' + data.inv_year + ' ' + data.inv_make + ' ' + data.inv_model + '" title="' + data.inv_year + ' ' + data.inv_make + ' ' + data.inv_model + '">'
+  container1 += '</div>'
+
+  container2 += '<h2>' + data.inv_make + ' ' + data.inv_model + ' Details</h2>'
+  container2 += '<p class="bold-text">Price: ' + new Intl.NumberFormat('en-US').format(data.inv_price) + '</p>'
+  container2 += '<p><span class="bold-text">Description:</span> ' + data.inv_description + '</p>'
+  container2 += '<p><span class="bold-text">Color:</span> ' + data.inv_color + '</p>'
+  container2 += '<p><span class="bold-text">Miles:</span> ' + new Intl.NumberFormat('en-US').format(data.inv_miles) + '</p>'
+  container2 += '</div>'
+  
+  grid += container1
+  grid += container2
+  grid += '</div>'
+
+ return grid  
+}
 
 module.exports = Util

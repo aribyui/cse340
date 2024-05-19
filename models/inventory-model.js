@@ -89,9 +89,21 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
+/* ***************************
+ *  Get an inventory single item view
+ * ************************** */
+async function getVehicleByInventoryId(inventory_id) {
+  const data = await pool.query(
+    `SELECT * FROM public.inventory
+    WHERE inv_id = $1`,
+    [inventory_id]
+  )
+  return data.rows[0]
+}
+
 /*
   📌 ¡Muy importante! Esta función ahora debe incluirse en las exportaciones en la parte inferior del archivo. 
   De lo contrario, no será utilizable por el controlador.
 */
 
-module.exports = { getClassifications, getInventoryByClassificationId }
+module.exports = { getClassifications, getInventoryByClassificationId, getVehicleByInventoryId }
