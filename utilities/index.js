@@ -83,6 +83,43 @@ Util.buildVehicleDetailsGrid = async function(data) {
  return grid  
 }
 
+/* **************************************
+* Build the login view HTML
+* ************************************ */
+// Util.buildLoginView = async function() {
+//   const view = `
+//     <form>
+//       <fieldset>
+//         <label for="account_email">Email Address: <input type="text" id="account_email" name="account_email"></label>
+//         <label for="account_password">Password: <input type="password" id="account_password" name="account_password"></label>
+//         <input type="submit" value="Login">
+//       </fieldset>
+//       <p>No account? <a href="/account/register">Sign-up</a></p>
+//     </form>
+//   `
+//   return view
+// }
+
+/* **************************************
+* Build the registration view HTML
+* ************************************ */
+// Util.buildRegisterView = async function() {
+//   const view = `
+//     <form action="/account/register" method="post" autocomplete="off">
+//       <fieldset>
+//         <label for="account_firstname">First name: <input type="text" id="account_firstname" name="account_firstname" required></label>
+//         <label for="account_lastname">Last name: <input type="text" id="account_lastname" name="account_lastname" required></label>
+//         <label for="account_email">Email address: <input type="email" id="account_email" name="account_email" required></label>
+//         <label for="account_password">Password: <input type="password" id="account_password" name="account_password" required maxlength="12" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"><div><p>Passwords must be minimun of 12 characters and include 1 capital letter, 1 number and 1 special character.</p></div></label>
+        
+//         <label for="show_password"><input type="checkbox" id="show_password"> Show password</label>
+//         <input type="submit" value="Register">
+//       </fieldset>      
+//     </form>
+//   `
+//   return view
+// }
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

@@ -14,9 +14,9 @@ const utilities = require("../utilities/")
   2️⃣ /type/:classificationId es la ruta que está siendo observada (nota que falta el elemento "inv" de la ruta, pero se tendrá en cuenta más adelante).
   3️⃣ invController.buildByClassification indica que la función buildByClassification dentro del invController será utilizada para cumplir con la solicitud enviada por la ruta.
 */
-router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
+router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId))
 
 // Route to build the inventory single item view
 router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildByInventoryById))
 
-module.exports = router;
+module.exports = router
