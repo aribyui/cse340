@@ -19,4 +19,10 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 // Route to build the inventory single item view
 router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildByInventoryById))
 
+router.get("", utilities.handleErrors(invController.buildVehicleManagement))
+
+router.get("/add-classification", utilities.handleErrors(invController.buildAddClassificationForm))
+
+router.get("/add-new-vehicle", utilities.handleErrors(invController.buildAddInventoryForm))
+
 module.exports = router

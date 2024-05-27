@@ -329,6 +329,8 @@ fieldset label {
 fieldset input[type="text"],
 fieldset input[type="email"],
 fieldset input[type="password"],
+fieldset textarea,
+fieldset input[type="number"],
 fieldset input[type="submit"]
 {
   display: block; 
@@ -522,5 +524,24 @@ form p a:visited
 
   .notice {
     grid-column: 1/3;
+  }
+
+  #management-links {
+    list-style-type: none;
+    line-height: 2rem;
+  }
+
+  #management-links a {
+    text-decoration: none;
+    color: var(--color1);  
+  }
+
+  #management-links a:visited
+  {
+    color: var(--color1);    
+  }
+
+  #management-links a:hover {
+    text-decoration: underline;
   }
 }

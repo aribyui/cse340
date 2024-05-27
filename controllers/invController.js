@@ -80,7 +80,24 @@ invCont.buildByInventoryById = async function(req, res, next) {
   const vehicleYear = data.inv_year
   const vehicleMake = data.inv_make
   const vehicleModel = data.inv_model
-  res.render('./inventory/details', {title: vehicleYear + ' ' + vehicleMake + ' ' + vehicleModel, nav, grid})
+  res.render("./inventory/details", {title: vehicleYear + ' ' + vehicleMake + ' ' + vehicleModel, nav, grid})
+}
+
+invCont.buildVehicleManagement = async function(req, res, next) {
+  const nav = await utilities.getNav()
+  const addNewClassificationLink = '/inv/add-classification'
+  const addNewVehicleId = '/inv/add-inventory'
+  res.render("./inventory/management", {title: "Vehicle Management", nav})
+}
+
+invCont.buildAddClassificationForm = async function(req, res, next) {
+  const nav = await utilities.getNav()
+  res.render("./inventory/add-classification", {title: "Add New Classification", nav})
+}
+
+invCont.buildAddInventoryForm = async function(req, res, next) {
+  const nav = await utilities.getNav()
+  res.render("./inventory/add-inventory", {title: "Add New Vehicle", nav})
 }
 
 module.exports = invCont
