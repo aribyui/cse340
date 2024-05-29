@@ -101,9 +101,40 @@ async function getVehicleByInventoryId(inventory_id) {
   return data.rows[0]
 }
 
+/* **********************
+ *   Register new classification
+ * ********************* */
+async function registerClassification(classification_name) {
+  try {
+    const sql = `
+    INSERT INTO public.classification
+      (classification_name)
+    VALUES
+      ($1)
+    RETURNING *
+    `
+    return await pool.query(sql, [classification_name])   
+  } catch (error) {
+    return error.message
+  }
+}
+
+/* **********************
+ *   Check for existing classification
+ * ********************* */
+async function checkExistingClassification(classification_name) {
+  try {
+    const sql = `SELECT * FROM public.classification WHERE classification_name = $1`
+    const classification = await pool.query(sql, [classification_name])
+    return classification.rowCount
+  } catch (error) {
+    return error.message
+  }
+}
+
 /*
   📌 ¡Muy importante! Esta función ahora debe incluirse en las exportaciones en la parte inferior del archivo. 
   De lo contrario, no será utilizable por el controlador.
 */
 
-module.exports = { getClassifications, getInventoryByClassificationId, getVehicleByInventoryId }
+module.exports = { getClassifications, getInventoryByClassificationId, getVehicleByInventoryId, registerClassification, checkExistingClassification }

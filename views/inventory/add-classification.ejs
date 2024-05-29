@@ -1,9 +1,20 @@
 <h1><%- title %></h1>
 
-<form action="">
+<% if (errors) { %>
+  <ul class="notice">
+  <% for (let i = 0; i < errors.array().length; i++) { %>
+    <% if (errors.array()[i].msg === "Invalid value") { %>
+      <% continue %>
+      <% } %>
+      <li><%= errors.array()[i].msg %></li>
+    <% } %>
+  </ul>
+<% } %>
+
+<form action="/inv/add-classification" method="post" autocomplete="off">
   <fieldset>
-    <h2>Classification Name</h2>
-    <label for="classification_name">NAME MUST BE ALPHABETIC CHARACTERS ONLY<input type="text" id="classification_name" name="classificationName"></label>
+    <label for="classification_name">Name must be alphabetic characters only
+      <input type="text" id="classificationName" name="classification_name" pattern="^[a-zA-Z0-9]+$" required value="<%= locals.classification_name %>"></label>
     <input type="submit" value="Add Classification">
   </fieldset>
 </form>

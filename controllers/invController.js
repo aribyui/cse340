@@ -83,21 +83,39 @@ invCont.buildByInventoryById = async function(req, res, next) {
   res.render("./inventory/details", {title: vehicleYear + ' ' + vehicleMake + ' ' + vehicleModel, nav, grid})
 }
 
+/* ****************************************
+*  Deliver Vehicle Management view
+* *************************************** */
 invCont.buildVehicleManagement = async function(req, res, next) {
-  const nav = await utilities.getNav()
-  const addNewClassificationLink = '/inv/add-classification'
-  const addNewVehicleId = '/inv/add-inventory'
+  let nav = await utilities.getNav()  
   res.render("./inventory/management", {title: "Vehicle Management", nav})
 }
 
+/* ****************************************
+*  Deliver Add New Classification view
+* *************************************** */
 invCont.buildAddClassificationForm = async function(req, res, next) {
-  const nav = await utilities.getNav()
-  res.render("./inventory/add-classification", {title: "Add New Classification", nav})
+  let nav = await utilities.getNav()
+  res.render("./inventory/add-classification", {
+    title: "Add New Classification", 
+    nav, 
+    errors: null,
+  })
 }
 
-invCont.buildAddInventoryForm = async function(req, res, next) {
-  const nav = await utilities.getNav()
-  res.render("./inventory/add-inventory", {title: "Add New Vehicle", nav})
+invCont.registerClassification = async function(req, res, next) {
+  let nav = await utilities.getNav()
+  const { classification_name } = req.body
+  
+  const regResult = await invModel.registerClassification(classification_name)
+
+  if (regResult) {
+    req.flash ("notice",`Congratulations, you\'re registered ${classification_name}.`)    
+    res.status(201).render("./inventory/management", {title: "Vehicle Management",nav}) 
+  } else {
+    req.flash("notice", "Sorry, the registration failed.")
+    res.status(501).render("./inventory/add-classification", {title: "Add New classification",nav})
+  }
 }
 
 module.exports = invCont

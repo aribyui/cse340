@@ -415,6 +415,7 @@ form p a:visited
   body {
     background-image: url("/images/site/checkerboard.jpg");
   }
+
   #wrapper {   
     border: 3px solid var(--accent1);
     max-width: 1000px;

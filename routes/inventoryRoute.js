@@ -5,8 +5,8 @@ const express = require("express")
 const router = new express.Router() 
 // Lleva el controlador de inventario al ámbito de este documento de enrutador para ser utilizado.
 const invController = require("../controllers/invController")
-
 const utilities = require("../utilities/")
+const regValidate = require('../utilities/classification-validation')
 
 // Route to build inventory by classification view
 /* 
@@ -19,10 +19,18 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 // Route to build the inventory single item view
 router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildByInventoryById))
 
+// Route to build the vehicle management view
 router.get("", utilities.handleErrors(invController.buildVehicleManagement))
 
+// Route to display the add classification form
 router.get("/add-classification", utilities.handleErrors(invController.buildAddClassificationForm))
 
-router.get("/add-new-vehicle", utilities.handleErrors(invController.buildAddInventoryForm))
+// Route to handle the addition of a new classification
+router.post(
+  "/add-classification",
+  regValidate.classificationRules(),
+  regValidate.checkRegData,
+  utilities.handleErrors(invController.registerClassification)
+)
 
 module.exports = router
