@@ -330,6 +330,7 @@ fieldset input[type="text"],
 fieldset input[type="email"],
 fieldset input[type="password"],
 fieldset textarea,
+fieldset select,
 fieldset input[type="number"],
 fieldset input[type="submit"]
 {
@@ -342,13 +343,21 @@ fieldset input[type="submit"]
   border: 2px solid var(--color1);
 }
 
+fieldset textarea {
+  resize: none;
+}
+
 fieldset p {
   font-style: italic;
 }
 
 fieldset input[type="text"]:required:invalid,
 fieldset input[type="email"]:required:invalid,
-fieldset input[type="password"]:required:invalid
+fieldset input[type="password"]:required:invalid,
+fieldset textarea,
+fieldset select,
+fieldset input[type="number"],
+fieldset input[type="submit"]
 {
   border: 2px solid var(--accent1);
 }

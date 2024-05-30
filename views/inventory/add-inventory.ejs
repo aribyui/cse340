@@ -1,16 +1,28 @@
 <h1><%- title %></h1>
 
-<form action="">
+<% if (errors) { %>
+  <ul class="notice">
+  <% for (let i = 0; i < errors.array().length; i++) { %>
+    <% if (errors.array()[i].msg === "Invalid value") { %>
+      <% continue %>
+      <% } %>
+      <li><%= errors.array()[i].msg %></li>
+    <% } %>
+  </ul>
+<% } %>
+
+<form action="/inv/add-inventory" method="post">
   <fieldset>
-    <label for="classification_id">Classification <input type="text" id="classification_id" name="classificationId"></label>
-    <label for="inv_make">Make <input type="text" id="inv_make" name="invMake"></label>
-    <label for="inv_model">Model <input type="text" id="inv_model" name="invModel"></label>
-    <label for="inv_description">Description <textarea type="textarea" id="inv_description" name="invDescription"></textarea></label>
-    <label for="inv_image">Image Path <input type="text" id="inv_image" name="invImage"></label>
-    <label for="inv_thumbnail">Thumbnail Path <input type="text" id="inv_thumbnail" name="invThumbnail"></label>
-    <label for="inv_price">Price <input type="number" id="inv_price" name="invPrice"></label>
-    <label for="inv_year">Year <input type="number" id="inv_year" name="invYear"></label>
-    <label for="inv_miles">Miles <input type="number" id="inv_miles" name="invMiles"></label>
-    <label for="inv_color">Color <input type="text" id="inv_color" name="invColor"></label>
+    <label for="classificationList">Classification<%- op %></label>
+    <label for="invMake">Make<input type="text" id="invMake" name="inv_make" placeholder="Min of 3 characters" maxlength="3" required></label>
+    <label for="invModel">Model<input type="text" id="invModel" name="inv_model" placeholder="Min of 3 characters" maxlength="3" required></label>
+    <label for="invDescription">Description<textarea id="invDescription" name="inv_description" required rows="10"></textarea></label>
+    <label for="invImage">Image Path<input type="text" id="invImage" name="inv_image" required></label>
+    <label for="invThumbnail">Thumbnail Path<input type="text" id="invThumbnail" name="inv_thumbnail" required></label>
+    <label for="invPrice">Price<input type="number" id="invPrice" name="inv_price" placeholder="Decimal or integer" required></label>
+    <label for="invYear">Year<input type="text" id="invYear" name="inv_year" placeholder="4-digit year" maxlength="4" required></label>
+    <label for="invMiles">Miles<input type="number" id="invMiles" name="inv_miles" placeholder="Digits only" required></label>
+    <label for="invColor">Color<input type="text" id="invColor" name="inv_color" required></label>
+    <input type="submit" value="Add Vehicle">
   </fieldset>
 </form>

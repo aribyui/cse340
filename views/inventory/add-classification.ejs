@@ -13,7 +13,7 @@
 
 <form action="/inv/add-classification" method="post" autocomplete="off">
   <fieldset>
-    <label for="classification_name">Name must be alphabetic characters only
+    <label for="classificationName">Name must be alphabetic characters only
       <input type="text" id="classificationName" name="classification_name" pattern="^[a-zA-Z0-9]+$" required value="<%= locals.classification_name %>"></label>
     <input type="submit" value="Add Classification">
   </fieldset>

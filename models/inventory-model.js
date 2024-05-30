@@ -132,9 +132,54 @@ async function checkExistingClassification(classification_name) {
   }
 }
 
+/* **********************
+ *   Register new vehicle
+ * ********************* */
+async function registerVehicle(classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color) {
+  try {
+    const sql = `
+    INSERT INTO public.inventory
+      (classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color)
+    VALUES
+      ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+    RETURNING *
+    `
+    return await pool.query(sql, [classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color])   
+  } catch (error) {
+    return error.message
+  }
+}
+
+
+/* **********************
+ *   Check for existing vehicle
+ * ********************* */
+async function checkExistingVehicle(classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color) {
+  try {
+    const sql = `
+    SELECT * FROM public.inventory 
+    WHERE classification_id = $1 
+    AND inv_make = $2 
+    AND inv_model = $3 
+    AND inv_description = $4 
+    AND inv_image = $5 
+    AND inv_thumbnail = $6 
+    AND inv_price = $7 
+    AND inv_year = $8 
+    AND inv_miles = $9 
+    AND inv_color = $10
+    `;
+    const result = await pool.query(sql, [classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color]);
+    return result.rowCount > 0; // Devuelve true si el vehículo existe
+  } catch (error) {
+    console.error("Error checking existing vehicle:", error);
+    return { error: error.message };
+  }
+}
+
 /*
   📌 ¡Muy importante! Esta función ahora debe incluirse en las exportaciones en la parte inferior del archivo. 
   De lo contrario, no será utilizable por el controlador.
 */
 
-module.exports = { getClassifications, getInventoryByClassificationId, getVehicleByInventoryId, registerClassification, checkExistingClassification }
+module.exports = { getClassifications, getInventoryByClassificationId, getVehicleByInventoryId, registerClassification, checkExistingClassification, registerVehicle, checkExistingVehicle }

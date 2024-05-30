@@ -96,11 +96,7 @@ invCont.buildVehicleManagement = async function(req, res, next) {
 * *************************************** */
 invCont.buildAddClassificationForm = async function(req, res, next) {
   let nav = await utilities.getNav()
-  res.render("./inventory/add-classification", {
-    title: "Add New Classification", 
-    nav, 
-    errors: null,
-  })
+  res.render("./inventory/add-classification", {title: "Add New Classification", nav, errors: null})
 }
 
 invCont.registerClassification = async function(req, res, next) {
@@ -111,10 +107,34 @@ invCont.registerClassification = async function(req, res, next) {
 
   if (regResult) {
     req.flash ("notice",`Congratulations, you\'re registered ${classification_name}.`)    
-    res.status(201).render("./inventory/management", {title: "Vehicle Management",nav}) 
+    res.status(201).render("./inventory/management", {title: "Vehicle Management", nav}) 
   } else {
     req.flash("notice", "Sorry, the registration failed.")
-    res.status(501).render("./inventory/add-classification", {title: "Add New classification",nav})
+    res.status(501).render("./inventory/add-classification", {title: "Add New Classification",nav})
+  }
+}
+
+/* ****************************************
+*  Deliver Add New Vehicle view
+* *************************************** */
+invCont.buildAddInventory = async function(req, res, next) {
+  let nav = await utilities.getNav()
+  let op = await utilities.buildClassificationList()
+  res.render("./inventory/add-inventory", {title: "Add New Vehicle", nav, op, errors: null})
+}
+
+invCont.registerVehicle = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  const { classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color } = req.body
+
+  const regResult = await invModel.registerVehicle(classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color)
+
+  if (regResult) {
+    req.flash("notice", "Congratulations, you\re registered a new vehicle.")
+    req.status(201).render("./inventory/management", {title: "Vehicle Management", nav})
+  } else {
+    req.flash("notice", "Sorry, the registration failed.")
+    res.status(501).render("./inventory/add-inventory", {title: "Add New Vehicle"})
   }
 }
 
