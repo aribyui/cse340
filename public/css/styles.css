@@ -6,8 +6,7 @@
   --textColor2:  #ffffff;
   --borderColor1: #1c1c1c;
   --borderColor2: #404040;
-  --accentColor: #21c8e5;
-  /* --accentColor: #dbff57; */
+  --accentColor: #22bdff;
   --headings: "Mallanna", sans-serif;
   --paragraphs: "Rubik", sans-serif;
 }
@@ -39,8 +38,9 @@ p, ul, a {
 
 .siteName a {
   font-size: 2rem;
-  text-decoration: none;
-  font-weight: 500;
+  text-decoration: none; 
+  font-family: var(--headings); 
+  font-weight: 600;
 }
 
 #tools a {
@@ -114,11 +114,13 @@ nav ul {
 
 #hero-label a {
   display: inline-block;
-  font-weight: bold;
   background-color: var(--accentColor);
   text-decoration: none;   
   padding: 0.5rem 1rem;
   width: 100%;
+  font-family: var(--headings);
+  font-weight: 600;
+  text-align: center;
 }
 
 #hero-label a:link {
@@ -209,6 +211,10 @@ nav ul {
 
 /* large view */
 @media screen and (min-width: 960px) {
+  .siteName a {
+    font-size: 2.5rem
+  }
+
   body {
     background-image: url("/images/site/checkerboard.jpg");
   }
@@ -275,7 +281,6 @@ nav ul {
     grid-column: 2/3;
     grid-row: 1/2;
     margin-bottom: 0; 
-    
   }
 
   #dmc-delorean-reviews ul {    
