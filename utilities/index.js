@@ -40,9 +40,9 @@ Util.buildClassificationGrid = async function (data){
       + '<picture>'
       + '<source media="(max-width: 500px)" srcset="' + vehicle.inv_thumbnail + '">'
       + '<img src="' + vehicle.inv_image + '" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
-      +' on CSE Motors" /></picture></a>' 
+      +' on CSE Motors"></picture></a>' 
       grid += '<div class="namePrice">'
-      grid += '<hr />'
+      grid += '<hr>'
       grid += '<h2>'
       grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
       + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
@@ -82,7 +82,6 @@ Util.buildVehicleDetailsGrid = async function (vehicle) {
     `;
   return grid;
 };
-
 
 /* ****************************************
  * Middleware For Handling Errors
