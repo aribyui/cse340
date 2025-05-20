@@ -28,7 +28,7 @@ Util.getNav = async function (req, res, next) {
 /* **************************************
  * Build the classification view HTML
  * ************************************ */
-Util.buildClassificationGrid = async function(data){
+Util.buildClassificationGrid = async function (data){
   let grid
   if(data.length > 0){
     grid = '<ul id="inv-display">'
@@ -59,6 +59,30 @@ Util.buildClassificationGrid = async function(data){
   }
   return grid
 }
+
+/* **************************************
+ * Build the inventory details view HTML
+ * ************************************ */
+Util.buildVehicleDetailsGrid = async function (vehicle) {
+  let grid;
+  grid = `
+    <article class="vehicle-card">
+      <picture>
+        <source media="(max-width: 500px)" srcset="${vehicle.inv_thumbnail}">
+        <img src="${vehicle.inv_image}" alt="${vehicle.inv_description}">
+      </picture>
+      <div class="vehicle-details">
+        <h2>${vehicle.inv_make} ${vehicle.inv_model}</h2>
+        <p class="higlighted"><span>Price:</span> $${new Intl.NumberFormat("en-US").format(vehicle.inv_price)} ✅</p>  
+        <p class="description"><span>Description:</span> ${vehicle.inv_description}</p>
+        <p class="higlighted"><span>Color:</span> ${vehicle.inv_color} 🎨</p>
+        <p><span>Miles:</span> ${new Intl.NumberFormat("en-US").format(vehicle.inv_miles)}</p>
+      </div>
+    </article>
+    `;
+  return grid;
+};
+
 
 /* ****************************************
  * Middleware For Handling Errors

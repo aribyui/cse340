@@ -6,6 +6,7 @@
   --textColor2:  #ffffff;
   --borderColor1: #1c1c1c;
   --borderColor2: #404040;
+  --borderColor3: #d0d0d0;
   --accentColor: #22bdff;
   --headings: "Mallanna", sans-serif;
   --paragraphs: "Rubik", sans-serif;
@@ -132,6 +133,7 @@ p, ul, a {
   font-family: var(--headings);
   font-weight: 600;
   text-align: center;
+  border-radius: 10px;
 }
 
 #hero-label a:link {
@@ -224,6 +226,47 @@ footer {
   margin-top: 0.67em;
 }
 
+/* vehicle card */
+.vehicle-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.vehicle-card picture {
+  position: relative;
+}
+
+.vehicle-card picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vehicle-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  text-align: center;
+}
+
+.vehicle-details p {
+  font-size: 1.2rem;
+  padding: 1rem 0;
+}
+
+.vehicle-details p span {
+  font-weight: 600;
+}
+
+.higlighted {
+  background-color: var(--borderColor3);
+}
+
+.description {
+  line-height: 2rem;
+}
+
 /* inventory page */
 #inv-display  {  
   display: grid;
@@ -253,6 +296,54 @@ footer {
 
 .namePrice h2 {
   padding: 1rem 0;
+}
+
+.status-hero {
+  position: relative;
+}
+
+.status-hero picture img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  filter: opacity(0.4);
+}
+
+.status-hero-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.status-hero-label h2,
+.status-hero-label p,
+.status-hero-label a
+{
+  color: var(--textColor1);
+}
+
+.status-hero-label p {
+  line-height: 1.5rem;
+}
+
+.status-hero-label a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #22bdff;
+  margin: 0 auto;
+}
+
+.status-hero-label a:hover {
+  background-color: var(--background1);
+  color: var(--textColor2);
+  transition: 0.2s ease-in-out;
 }
 
 /* large view */
@@ -317,7 +408,6 @@ footer {
   }
 
   #hero-label a {
-    padding: 1rem;
     font-size: 1.5rem;  
     text-align: center;
   }
@@ -376,6 +466,42 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  /* vehicle card */
+  .vehicle-card {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .vehicle-card {
+    display: flex;
+    align-items: center;
+  }
+
+  .vehicle-card picture img {
+    width: auto;
+    height: auto;
+    object-fit: none;
+  }
+
+  .status-hero-label h2 {
+    font-size: 3rem;
+  }
+
+  .status-hero-label p,
+  .status-hero-label a
+  {
+    font-size: 1.5rem;
+  }
+
+  .status-hero-label p {
+    line-height: 3rem; 
+  }
+
+  .status-hero-label a {
+    width: 50%;
+    
   }
 
 }
