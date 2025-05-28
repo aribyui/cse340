@@ -1,0 +1,53 @@
+<% if (title) { %> 
+  <h1><%= title %></h1>
+<% } %>
+
+<% if (errors) { %>
+  <ul class="invalid-values-msg">
+    <% errors.array().forEach(error =>{ %>    
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<%#
+/* **************************************
+ * Build the account registration view HTML
+ * ************************************ */ 
+ %>
+<form action="/account/register" method="post">
+  <img src="/images/site/icon-transparent.png" alt="cse motors logo">   
+    <h2>Create Your Account</h2>      
+    <p>Your journey begins here.</p>  
+  <label class="input-label">
+    First name    
+    <input type="text" name="account_firstname" required>
+  </label>
+  <label class="input-label">
+    Last name
+    <input type="text" name="account_lastname" required>
+  </label>
+  <label class="input-label">
+    Email 
+    <div class="input-icon">
+      <span><i class="fa-regular fa-envelope"></i></span>
+      <input type="email" placeholder="email@example.com" name="account_email" required>
+    </div>
+  </label>
+  <label class="input-label">
+    Password
+    <div class="input-icon">      
+      <span><i class="fa-solid fa-lock"></i></span>     
+      <input 
+        type="password" 
+        name="account_password" 
+        minlength="12" 
+        maxlength="50"         
+        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+        required
+      >
+    </div>   
+    <div id="password-requirements">Passwords must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character</div>
+  </label>  
+  <input type="submit" value="Register">
+</form>
