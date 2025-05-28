@@ -21,17 +21,17 @@
     <p>Your journey begins here.</p>  
   <label class="input-label">
     First name    
-    <input type="text" name="account_firstname" required>
+    <input type="text" name="account_firstname" required value="<%= locals.account_firstname %>">
   </label>
   <label class="input-label">
     Last name
-    <input type="text" name="account_lastname" required>
+    <input type="text" name="account_lastname" required value="<%= locals.account_lastname %>">
   </label>
   <label class="input-label">
     Email 
     <div class="input-icon">
       <span><i class="fa-regular fa-envelope"></i></span>
-      <input type="email" placeholder="email@example.com" name="account_email" required>
+      <input type="email" placeholder="email@example.com" name="account_email" required value="<%= locals.account_email %>">
     </div>
   </label>
   <label class="input-label">
