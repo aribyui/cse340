@@ -2,8 +2,6 @@
   <h1><%= title %></h1>
 <% } %>
 
-
-
 <%#
 /* **************************************
  * Build the account login view HTML
@@ -15,17 +13,18 @@
   <p>Sign in and get your journey started.</p>  
   <%- messages() %> <%# Muestra un mensaje que el usuario fue registrado correctamente %>
   <label class="input-label">
-    Email 
+    <span>Email </span>
     <div class="input-icon">
       <span><i class="fa-regular fa-envelope"></i></span>
       <input type="email" placeholder="email@example.com" name="account_email" required>
     </div>
   </label>
   <label class="input-label">
-    Password 
+    <span>Password</span> 
     <div class="input-icon">
       <span><i class="fa-solid fa-lock"></i></span>
       <input 
+        id="password"
         type="password" 
         name="account_password" 
         minlength="12" 
@@ -34,9 +33,9 @@
         required
       >
     </div>
-    <div id="password-requirements">Passwords must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character</div>
+    <span id="password-requirements">Passwords must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character</span>
   </label>
   <input type="submit" value="Login">
-  <label id="signup">No account? <a href="/account/register">Sign-up</a></label>
+  <span id="signup">No account? <a href="/account/register">Sign-up</a></span>
 </form>
 

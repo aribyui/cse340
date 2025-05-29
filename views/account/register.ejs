@@ -20,25 +20,26 @@
     <h2>Create Your Account</h2>      
     <p>Your journey begins here.</p>  
   <label class="input-label">
-    First name    
+    <span>First name</span>
     <input type="text" name="account_firstname" required value="<%= locals.account_firstname %>">
   </label>
   <label class="input-label">
-    Last name
+    <span>Last name</span>
     <input type="text" name="account_lastname" required value="<%= locals.account_lastname %>">
   </label>
   <label class="input-label">
-    Email 
+    <span>Email</span>
     <div class="input-icon">
       <span><i class="fa-regular fa-envelope"></i></span>
       <input type="email" placeholder="email@example.com" name="account_email" required value="<%= locals.account_email %>">
     </div>
   </label>
   <label class="input-label">
-    Password
+    <span>Password</span>
     <div class="input-icon">      
       <span><i class="fa-solid fa-lock"></i></span>     
       <input 
+        id="password"
         type="password" 
         name="account_password" 
         minlength="12" 
@@ -47,7 +48,7 @@
         required
       >
     </div>   
-    <div id="password-requirements">Passwords must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character</div>
+    <span id="password-requirements">Passwords must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character</span>
   </label>  
   <input type="submit" value="Register">
 </form>
