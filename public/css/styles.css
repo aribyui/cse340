@@ -232,7 +232,8 @@ footer {
 .vehicle-card {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 1rem; 
+  /* border: 2px dashed red; */
 }
 
 .vehicle-card picture {
@@ -240,6 +241,7 @@ footer {
 }
 
 .vehicle-card picture img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -249,12 +251,14 @@ footer {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  text-align: center;
+  text-align: center;  
+  /* border: 2px solid green; */
 }
 
 .vehicle-details p {
   font-size: 1.2rem;
-  padding: 1rem 0;
+  padding: 1rem 0.5rem;
+  
 }
 
 .vehicle-details p span {
@@ -267,6 +271,8 @@ footer {
 
 .description {
   line-height: 2rem;
+  word-break: break-word;     /* fuerza quiebre dentro de palabras largas */
+  overflow-wrap: break-word;  /* compatibilidad adicional con navegadores */
 }
 
 /* inventory page */
@@ -278,7 +284,7 @@ footer {
 }
 
 #inv-display li {
-  border: 2px solid var(--borderColor2);
+  border: 2px solid var(--borderColor3);
   border-radius: 15px;
 }
 
@@ -293,7 +299,7 @@ footer {
 }
 
 .namePrice hr {
-  border: 2px solid var(--borderColor1);
+  border: 2px solid var(--borderColor3);
 }
 
 .namePrice h2 {
@@ -352,7 +358,7 @@ footer {
 form {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1rem;
   background-color: var(--background4);
   border: 2px solid var(--borderColor3);
   padding: 2.5rem 1rem;
@@ -361,7 +367,6 @@ form {
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
-  
 }
 
 /* .input-label {  
@@ -394,7 +399,7 @@ form p {
   max-width: 400px;
 }
 
-.notice-classification {
+.message {
   margin-bottom: 1rem;
   list-style-type: none;
 }
@@ -405,18 +410,38 @@ form p {
   margin: 0 0 2rem;
 }
 
-.invalid-values-msg li:nth-child(1), 
+/* .invalid-values-msg li:nth-child(1), 
 .invalid-values-msg li:nth-child(3),
 .invalid-values-msg li:nth-child(5),
-.invalid-values-msg li:nth-child(7)
+.invalid-values-msg li:nth-child(7),
+.invalid-values-msg li:nth-child(9),
+.invalid-values-msg li:nth-child(11),
+.invalid-values-msg li:nth-child(13),
+.invalid-values-msg li:nth-child(15),
+.invalid-values-msg li:nth-child(17)
 {
   font-weight: 600;
-}
+} */
+
+/* .invalid-values-msg li:nth-child(2),
+.invalid-values-msg li:nth-child(4),
+.invalid-values-msg li:nth-child(6),
+.invalid-values-msg li:nth-child(8),
+.invalid-values-msg li:nth-child(10),
+.invalid-values-msg li:nth-child(12),
+.invalid-values-msg li:nth-child(14),
+.invalid-values-msg li:nth-child(16)
+{
+  color: red;
+} */
 
 form input[type="text"],
 form input[type="email"],
 form input[type="password"],
-form input[type="submit"]
+form input[type="submit"],
+form input[type="number"],
+form select,
+form textarea
 {
   display: block;
   width: 100%;
@@ -452,12 +477,22 @@ form input[type="password"] {
   background-color: var(--background2);
 }
 
+form textarea {
+  resize: none;
+  height: 150px;
+}
+
 form input[type="text"]:required:valid,
 form input[type="email"]:required:valid,
-form input[type="password"]:required:valid
+form input[type="password"]:required:valid,
+form input[type="number"]:required:valid,
+form select:required:valid,
+form textarea:required:valid
 {
   border: 2px solid var(--accentColor);
 }
+
+
 
 form input[type="submit"] {
   background-color: var(--accentColor);
@@ -467,6 +502,13 @@ form input[type="submit"]:hover {
   background-color: var(--background1);
   color: var(--textColor2);
   transition: 0.2s ease-in-out;
+}
+
+.input-icon input {
+  padding-right: 35px;
+  /* Deja espacio para el icono */
+  box-sizing: border-box;
+  /* Para que el padding no rompa el ancho */
 }
 
 .input-icon {
@@ -490,10 +532,6 @@ form input[type="submit"]:hover {
 .management-menu {
   list-style-type: none;
   line-height: 2rem
-}
-
-form input[name="classification_name"] {
-  margin-bottom: 2rem;
 }
 
 #signup {
@@ -661,14 +699,9 @@ form input[name="classification_name"] {
   }
 
   form {
+    gap: 2rem;
     padding: 2.5rem;
   }
-
-  /* form input[type="email"],
-  form input[type="password"] 
-  {
-    padding-left: 1rem;
-  } */
 
   .input-icon i {
     right: 1rem;

@@ -1,21 +1,18 @@
 <% if (title) { %>
 <h1><%= title %></h1>
-<% } %>
-
-<% if (errors) { %>
-  <ul class="invalid-values-msg">
-    <% errors.array().forEach(error =>{ %>    
-      <li><%= error.msg %></li>
-    <% }) %>
-  </ul>
-<% } %>
-
-
+<% } %> <% if (errors) { %>
+<ul class="invalid-values-msg">
+  <% errors.array().forEach(error =>{ %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %> <%# /* ************************************** * Build the add
+classification view HTML * ************************************ */ %>
 <form action="/inv/add-classification" method="post">
   <img src="/images/site/icon-transparent.png" alt="cse motors logo">
   <h2>Add a new vehicle classification</h2>
-  <p>Define a new category for vehicle types.</p>
-  <label class="input-label" for="classification_name"
+  <p>Define a new classification for vehicle types.</p>
+  <label class="input-label"
     ><span>Name must be alphabetic characters only</span>
     <input
       type="text"
@@ -23,6 +20,6 @@
       pattern="^[A-Za-z]+$"
       required
     >
-    <input type="submit" value="Add Classification">
   </label>
+  <input type="submit" value="Add Classification">
 </form>

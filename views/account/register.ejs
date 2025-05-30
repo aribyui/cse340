@@ -1,54 +1,62 @@
-<% if (title) { %> 
-  <h1><%= title %></h1>
-<% } %>
-
-<% if (errors) { %>
-  <ul class="invalid-values-msg">
-    <% errors.array().forEach(error =>{ %>    
-      <li><%= error.msg %></li>
-    <% }) %>
-  </ul>
-<% } %>
-
-<%#
-/* **************************************
- * Build the account registration view HTML
- * ************************************ */ 
- %>
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } %> <% if (errors) { %>
+<ul class="invalid-values-msg">
+  <% errors.array().forEach(error =>{ %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %> <%# /* ************************************** * Build the account
+registration view HTML * ************************************ */ %>
 <form action="/account/register" method="post">
-  <img src="/images/site/icon-transparent.png" alt="cse motors logo">   
-    <h2>Create Your Account</h2>      
-    <p>Your journey begins here.</p>  
+  <img src="/images/site/icon-transparent.png" alt="cse motors logo">
+  <h2>Create Your Account</h2>
+  <p>Your journey begins here.</p>
   <label class="input-label">
     <span>First name</span>
-    <input type="text" name="account_firstname" required value="<%= locals.account_firstname %>">
+    <input
+      type="text"
+      name="account_firstname"
+      required
+      value="<%= locals.account_firstname %>"
+    >
   </label>
   <label class="input-label">
     <span>Last name</span>
-    <input type="text" name="account_lastname" required value="<%= locals.account_lastname %>">
+    <input
+      type="text"
+      name="account_lastname"
+      required
+      value="<%= locals.account_lastname %>"
+    >
   </label>
   <label class="input-label">
     <span>Email</span>
-    <div class="input-icon">
-      <span><i class="fa-regular fa-envelope"></i></span>
-      <input type="email" placeholder="email@example.com" name="account_email" required value="<%= locals.account_email %>">
-    </div>
+    <span><i class="fa-regular fa-envelope"></i></span>
+    <input
+      type="email"
+      placeholder="email@example.com"
+      name="account_email"
+      required
+      value="<%= locals.account_email %>"
+    >
   </label>
   <label class="input-label">
     <span>Password</span>
-    <div class="input-icon">      
-      <span><i class="fa-solid fa-lock"></i></span>     
-      <input 
-        id="password"
-        type="password" 
-        name="account_password" 
-        minlength="12" 
-        maxlength="50"         
-        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
-        required
-      >
-    </div>   
-    <span id="password-requirements">Passwords must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character</span>
-  </label>  
+    <span><i class="fa-solid fa-lock"></i></span>
+    <input
+      id="password"
+      type="password"
+      name="account_password"
+      minlength="12"
+      maxlength="50"
+      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+      required
+    >
+    <span id="password-requirements"
+      >Passwords must be minimum of 12 characters and include 1 capital letter,
+      1 number and 1 special character</span
+    >
+  </label>
   <input type="submit" value="Register">
 </form>

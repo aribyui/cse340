@@ -1,41 +1,40 @@
 <% if (title) { %>
-  <h1><%= title %></h1>
-<% } %>
-
-<%#
-/* **************************************
- * Build the account login view HTML
- * ************************************ */ 
- %>
-<form action="/account/login" method="post">  
-  <img src="/images/site/icon-transparent.png" alt="cse motors logo">   
-  <h2>Drive Into Your Account</h2>      
-  <p>Sign in and get your journey started.</p>  
-  <%- messages() %> <%# Muestra un mensaje que el usuario fue registrado correctamente %>
+<h1><%= title %></h1>
+<% } %> <%# /* ************************************** * Build the account login
+view HTML * ************************************ */ %>
+<form action="/account/login" method="post">
+  <img src="/images/site/icon-transparent.png" alt="cse motors logo">
+  <h2>Drive Into Your Account</h2>
+  <p>Sign in and get your journey started.</p>
+  <%- messages() %> <%# Muestra un mensaje que el usuario fue registrado
+  correctamente %>
   <label class="input-label">
     <span>Email </span>
-    <div class="input-icon">
-      <span><i class="fa-regular fa-envelope"></i></span>
-      <input type="email" placeholder="email@example.com" name="account_email" required>
-    </div>
+    <span><i class="fa-regular fa-envelope"></i></span>
+    <input
+      type="email"
+      placeholder="email@example.com"
+      name="account_email"
+      required
+    >
   </label>
   <label class="input-label">
-    <span>Password</span> 
-    <div class="input-icon">
-      <span><i class="fa-solid fa-lock"></i></span>
-      <input 
-        id="password"
-        type="password" 
-        name="account_password" 
-        minlength="12" 
-        maxlength="50"         
-        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
-        required
-      >
-    </div>
-    <span id="password-requirements">Passwords must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character</span>
+    <span>Password</span>
+    <span><i class="fa-solid fa-lock"></i></span>
+    <input
+      id="password"
+      type="password"
+      name="account_password"
+      minlength="12"
+      maxlength="50"
+      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+      required
+    >
+    <span id="password-requirements"
+      >Passwords must be minimum of 12 characters and include 1 capital letter,
+      1 number and 1 special character</span
+    >
   </label>
   <input type="submit" value="Login">
   <span id="signup">No account? <a href="/account/register">Sign-up</a></span>
 </form>
-
