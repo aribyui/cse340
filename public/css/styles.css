@@ -3,6 +3,7 @@
   --background2: #ffffff;
   --background3: #ffffffd5;
   --background4: #eeeeee;
+  --background5: #d0d0d0;
   --textColor1:  #1c1c1c;
   --textColor2:  #ffffff;
   --textColorRequired: red;
@@ -23,11 +24,11 @@
   margin: 0;
 }
 
-h1, h2, h3, #inv-display li a {
+h1, h2, h3, #inv-display li a, #inventoryDisplay th {
   font-family: var(--headings);  
 }
 
-p, ul, a {
+p, ul, a, #classificationList, #inventoryDisplay td {
   font-family: var(--paragraphs);  
 }
 
@@ -492,17 +493,21 @@ form textarea:required:valid
   border: 2px solid var(--accentColor);
 }
 
-
-
 form input[type="submit"] {
   background-color: var(--accentColor);
 }
 
-form input[type="submit"]:hover {
+form input[type="submit"]:disabled {
+  background-color: var(--background5);
+}
+
+form input[type="submit"]:not(:disabled):hover {
   background-color: var(--background1);
   color: var(--textColor2);
   transition: 0.2s ease-in-out;
 }
+
+
 
 .input-icon input {
   padding-right: 35px;
@@ -529,16 +534,56 @@ form input[type="submit"]:hover {
   color: var(--textColor1);
 }
 
-.management-menu {
-  list-style-type: none;
-  line-height: 2rem
-}
-
 #signup {
   display: block;
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
+}
+
+.management-menu {
+  list-style-type: none;
+  line-height: 2rem
+}
+
+.management-inventory {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+#classificationList {
+  display: block;
+  padding: .75rem;
+  border-radius: 10px;
+  border: 2px solid var(--borderColor3);
+/
+}
+
+#inventoryDisplay {
+  width: 100%;
+  max-width: 500px;
+  
+}
+
+#inventoryDisplay th {
+  background-color: var(--background1);
+  color: var(--textColor2);
+  text-align: left;
+  padding: .75rem 1rem;
+  font-size: 1.5rem;
+  border-radius: 10px;
+}
+
+#inventoryDisplay td {
+  width: 100%;
+  max-width: 300px;
+  padding: 1rem;  
+}
+
+#inventoryDisplay tr:nth-child(even) {
+  background-color: var(--accentColor);
 }
 
 /* large view */

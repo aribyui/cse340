@@ -1,0 +1,139 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } %> <% if (errors) { %>
+<ul class="invalid-values-msg">
+  <% errors.array().forEach(error =>{ %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %> <%# /* ************************************** * Build the edit vehicle
+view HTML ************************************** */ %>
+<form id="updateForm" action="/inv/update" method="post">
+  <img src="/images/site/icon-transparent.png" alt="cse motors logo" />
+  <h2>Edit vehicle</h2>
+  <p>Provide the details to modify this vehicle in the inventory.</p>
+
+  <!-- Classification -->
+  <label class="input-label">
+    <span>Classification</span>
+    <%- classificationSelect %>
+  </label>
+
+  <!-- Make -->
+  <label class="input-label">
+    <span>Make</span>
+    <input
+      type="text"
+      name="inv_make"
+      minlength="3"
+      placeholder="Min of 3 characters"
+      value="<%= locals.inv_make %>"
+      required
+    />
+  </label>
+
+  <!-- Model -->
+  <label class="input-label">
+    <span>Model</span>
+    <input
+      type="text"
+      name="inv_model"
+      minlength="3"
+      placeholder="Min of 3 characters"
+      value="<%= locals.inv_model %>"
+      required
+    />
+  </label>
+
+  <!-- Description -->
+  <label class="input-label">
+    <span>Description</span>
+    <textarea name="inv_description" minlength="50" maxlength="1000" required>
+<%= locals.inv_description || '' %></textarea
+    >
+  </label>
+
+  <!-- Image Path -->
+  <label class="input-label">
+    <span>Image Path</span>
+    <input
+      type="text"
+      name="inv_image"
+      placeholder="/images/vehicles/no-image.png"
+      value="<%= locals.inv_image %>"
+      required
+    />
+  </label>
+
+  <!-- Thumbnail Path -->
+  <label class="input-label">
+    <span>Thumbnail Path</span>
+    <input
+      type="text"
+      name="inv_thumbnail"
+      placeholder="/images/vehicles/no-image-tn.png"
+      value="<%= locals.inv_thumbnail %>"
+      required
+    />
+  </label>
+
+  <!-- Price -->
+  <label class="input-label">
+    <span>Price</span>
+    <input
+      type="number"
+      name="inv_price"
+      min="0"
+      placeholder="Decimal or integer"
+      value="<%= locals.inv_price %>"
+      required
+    />
+  </label>
+
+  <!-- Year -->
+  <label class="input-label">
+    <span>Year</span>
+    <input
+      type="number"
+      name="inv_year"
+      min="1886"
+      placeholder="4-digit year"
+      value="<%= locals.inv_year %>"
+      required
+    />
+  </label>
+
+  <!-- Miles -->
+  <label class="input-label">
+    <span>Miles</span>
+    <input
+      type="number"
+      name="inv_miles"
+      min="0"
+      placeholder="Digits only"
+      value="<%= locals.inv_miles %>"
+      required
+    />
+  </label>
+
+  <!-- Color -->
+  <label class="input-label">
+    <span>Color</span>
+    <input
+      type="text"
+      name="inv_color"
+      value="<%= locals.inv_color %>"
+      required
+    />
+  </label>
+
+  <!-- Update Vehicle -->
+  <input id="updateBtn" type="submit" value="Update Vehicle" disabled>
+
+  <input type="hidden" name="inv_id"
+  <% if (locals.inv_id) { %> value="<%= locals.inv_id %>"
+  <% } %>>
+  
+</form>
+
+<script src="/js/inv-update.js"></script>
