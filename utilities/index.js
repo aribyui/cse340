@@ -43,7 +43,7 @@ Util.buildClassificationGrid = async function (data) {
         vehicle.inv_make +
         " " +
         vehicle.inv_model +
-        'details">' +
+        ' details">' +
         "<picture>" +
         '<source media="(max-width: 500px)" srcset="' +
         vehicle.inv_thumbnail +

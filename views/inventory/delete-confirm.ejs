@@ -1,0 +1,72 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } %> 
+
+<%# /* ************************************** 
+* Build the delete vehicle view HTML 
+************************************** */ %>
+<form action="/inv/delete" method="post">
+  <img src="/images/site/icon-transparent.png" alt="cse motors logo" />
+  <h2>Delete vehicle</h2>
+  <p>This action will permanently remove the vehicle from the inventory. Do you want to continue?</p>
+
+  <!-- Make -->
+  <label class="input-label">
+    <span>Make</span>
+    <input
+      type="text"
+      name="inv_make"
+      minlength="3"
+      placeholder="Min of 3 characters"
+      value="<%= locals.inv_make %>"
+      readonly
+    >
+  </label>
+
+  <!-- Model -->
+  <label class="input-label">
+    <span>Model</span>
+    <input
+      type="text"
+      name="inv_model"
+      minlength="3"
+      placeholder="Min of 3 characters"
+      value="<%= locals.inv_model %>"
+      readonly
+    >
+  </label>
+
+  <!-- Price -->
+  <label class="input-label">
+    <span>Price</span>
+    <input
+      type="number"
+      name="inv_price"
+      min="0"
+      placeholder="Decimal or integer"
+      value="<%= locals.inv_price %>"
+      readonly
+    >
+  </label>
+
+  <!-- Year -->
+  <label class="input-label">
+    <span>Year</span>
+    <input
+      type="number"
+      name="inv_year"
+      min="1886"
+      placeholder="4-digit year"
+      value="<%= locals.inv_year %>"
+      readonly
+    >
+  </label>
+
+  <!-- Delete Vehicle -->
+  <input id="deleteBtn" type="submit" value="Delete Vehicle">
+
+  <input type="hidden" name="inv_id"
+  <% if (locals.inv_id) { %> value="<%= locals.inv_id %>"
+  <% } %>>
+  
+</form>
