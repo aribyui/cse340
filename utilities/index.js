@@ -180,4 +180,17 @@ Util.checkLogin = (req, res, next) => {
   }
 };
 
+/* ****************************************
+ * Middleware to check account type (Employee/Admin)
+ * *************************************** */
+Util.checkAccountType = (req, res, next) => {
+  if (res.locals.accountData?.account_type === "Employee" || 
+      res.locals.accountData?.account_type === "Admin") {
+    next(); // Access granted
+  } else {
+    req.flash("notice", "⚠️ Access denied: Requires Employee or Admin privileges.");
+    res.redirect("/account/login");
+  }
+};
+
 module.exports = Util;

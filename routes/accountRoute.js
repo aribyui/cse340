@@ -31,4 +31,7 @@ router.post(
   utilities.handleErrors(accountController.registerAccount)
 );
 
+// Route to build logout view
+router.get("/logout", utilities.checkJWTToken, utilities.handleErrors(accountController.buildLogout));
+
 module.exports = router;

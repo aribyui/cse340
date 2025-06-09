@@ -24,6 +24,10 @@
   margin: 0;
 }
 
+/* * {
+  border: 1px solid red;
+} */
+
 h1, h2, h3, #inv-display li a, #inventoryDisplay th {
   font-family: var(--headings);  
 }
@@ -47,8 +51,27 @@ p, ul, a, #classificationList, #inventoryDisplay td {
   font-weight: 600;
 }
 
+#tools {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
 #tools a {
   text-decoration: none;
+}
+
+/* #tools a:first-child {
+  margin: 10px;
+} */
+
+#tools a:first-child span {
+  font-weight: bold;  
+}
+
+#tools a:first-child:hover span {
+  color: var(--accentColor);
 }
 
 .siteName a,
@@ -586,6 +609,19 @@ form input[type="submit"]:not(:disabled):hover {
   background-color: var(--accentColor);
 }
 
+.message-logged-out {
+  margin: 1rem 0;
+  list-style-type: none;
+  display: inline-block ;
+}
+
+.message-logged-out li {
+  background-color: var(--background1);
+  color: var(--textColor2);
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
 /* large view */
 @media screen and (min-width: 960px) {
   .siteName a {
@@ -621,7 +657,7 @@ form input[type="submit"]:not(:disabled):hover {
 
   #hero-image h2 {
     font-size: 3rem;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
   } 
 
   #hero-image img {
@@ -752,4 +788,12 @@ form input[type="submit"]:not(:disabled):hover {
     right: 1rem;
   }
 
+  .message-logged-out { 
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .message-logged-out li {
+    padding: 1rem 2rem;
+  }
 }

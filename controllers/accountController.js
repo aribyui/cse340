@@ -91,12 +91,22 @@ async function accountLogin(req, res) {
   }
   try {
     if (await bcrypt.compare(account_password, accountData.account_password)) {
-      delete accountData.account_password;
+      // delete accountData.account_password;
+
+      const payload = {
+        account_id: accountData.account_id,
+        account_firstname: accountData.account_firstname,
+        account_lastname: accountData.account_lastname,
+        account_email: accountData.account_email,
+        account_type: accountData.account_type,
+      };
+
       const accessToken = jwt.sign(
-        accountData,
+        payload,
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: 3600 * 1000 }
       );
+      
       if (process.env.NODE_ENV === "development") {
         res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 });
       } else {
@@ -136,10 +146,20 @@ async function buildAccountManagement(req, res) {
   });
 }
 
+/* ****************************************
+ *  Process logout request
+ * ************************************ */
+async function buildLogout(req, res) {
+  res.clearCookie("jwt");
+  req.flash("message-logged-out", "You have been successfully logged out.");
+  res.redirect("/");
+}
+
 module.exports = {
   buildLogin,
   buildRegister,
   registerAccount,
   accountLogin,
-  buildAccountManagement
+  buildAccountManagement,
+  buildLogout,
 };
