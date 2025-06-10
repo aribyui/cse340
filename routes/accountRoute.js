@@ -32,6 +32,33 @@ router.post(
 );
 
 // Route to build logout view
-router.get("/logout", utilities.checkJWTToken, utilities.handleErrors(accountController.buildLogout));
+router.get(
+  "/logout",
+  utilities.checkJWTToken,
+  utilities.handleErrors(accountController.buildLogout)
+);
+
+// Route to build update account view
+router.get(
+  "/update/:account_id",
+  utilities.handleErrors(accountController.buildUpdateAccount)
+);
+
+// Route to update an account
+router.post(
+  "/update",
+  regValidate.accountRules(),
+  regValidate.checkAccountData,
+  utilities.handleErrors(accountController.updateAccount)
+);
+
+// Route to update a password
+router.post(
+  "/update-password",
+  regValidate.passwordRules(),
+  regValidate.checkPasswordData,
+  utilities.handleErrors(accountController.changePassword)
+);
+
 
 module.exports = router;

@@ -622,6 +622,20 @@ form input[type="submit"]:not(:disabled):hover {
   padding: 0.5rem;
 }
 
+#welcome-message {
+  margin-bottom: 1rem;
+}
+
+.inventory-management-menu {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem
+}
+
+#form-password {
+  margin-top: 1rem;
+}
+
 /* large view */
 @media screen and (min-width: 960px) {
   .siteName a {
@@ -795,5 +809,9 @@ form input[type="submit"]:not(:disabled):hover {
 
   .message-logged-out li {
     padding: 1rem 2rem;
+  }
+
+  #form-password {
+    margin-top: 2rem;
   }
 }
